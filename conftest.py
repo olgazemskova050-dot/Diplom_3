@@ -5,6 +5,7 @@ from selenium.webdriver.firefox.service import Service as FirefoxService
 from webdriver_manager.chrome import ChromeDriverManager
 from webdriver_manager.firefox import GeckoDriverManager
 
+from urls import BASE_URL
 from pages.main_page import MainPage
 from pages.order_feed_page import OrderFeedPage
 
@@ -23,7 +24,7 @@ def driver(request):
         raise ValueError(f"Unsupported browser: {request.param}")
 
     driver.maximize_window()
-    driver.get("https://stellarburgers.education-services.ru/")
+    driver.get(BASE_URL)
     yield driver
     driver.quit()
 

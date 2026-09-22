@@ -4,13 +4,13 @@ from locators.main_page_locators import MainPageLocators
 
 class MainPage(BasePage):
     def click_constructor(self):
-        self.click_element(MainPageLocators.CONSTRUCTOR_BUTTON)
+        self.js_click(MainPageLocators.CONSTRUCTOR_BUTTON)
 
     def click_order_feed(self):
-        self.click_element(MainPageLocators.ORDER_FEED_BUTTON)
+        self.js_click(MainPageLocators.ORDER_FEED_BUTTON)
 
     def click_ingredient(self):
-        self.click_element(MainPageLocators.INGREDIENT_ITEM)
+        self.js_click(MainPageLocators.INGREDIENT_ITEM)
 
     def is_ingredient_modal_visible(self):
         return self.is_element_visible(MainPageLocators.INGREDIENT_DETAILS_MODAL)
@@ -19,7 +19,6 @@ class MainPage(BasePage):
         return self.is_element_invisible(MainPageLocators.INGREDIENT_DETAILS_MODAL)
 
     def close_modal(self):
-        # клик по крестику через JS — надёжнее обычного click
         self.js_click(MainPageLocators.MODAL_CLOSE_BUTTON)
 
     def get_ingredient_counter(self):

@@ -21,6 +21,9 @@ class BasePage:
     def get_text(self, locator):
         return self.find_element(locator).text
 
+    def get_current_url(self):
+        return self.driver.current_url
+
     def is_element_visible(self, locator):
         try:
             self.wait.until(EC.visibility_of_element_located(locator))

@@ -1,19 +1,21 @@
 import allure
 
+from urls import BASE_URL, ORDER_FEED_PATH
+
 
 @allure.feature("Основная функциональность")
 class TestMainFunctionality:
 
     @allure.title("Переход по клику на «Конструктор»")
-    def test_go_to_constructor(self, driver, main_page):
+    def test_go_to_constructor(self, main_page):
         main_page.click_order_feed()
         main_page.click_constructor()
-        assert "stellarburgers.education-services.ru" in driver.current_url
+        assert BASE_URL.rstrip("/") in main_page.get_current_url()
 
     @allure.title("Переход по клику на раздел «Лента заказов»")
-    def test_go_to_order_feed(self, driver, main_page):
+    def test_go_to_order_feed(self, main_page):
         main_page.click_order_feed()
-        assert "/feed" in driver.current_url
+        assert ORDER_FEED_PATH in main_page.get_current_url()
 
     @allure.title("Клик на ингредиент открывает всплывающее окно")
     def test_ingredient_modal_appears(self, main_page):
